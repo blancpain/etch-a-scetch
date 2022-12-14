@@ -5,3 +5,17 @@
     height: 600px; 
     margin: 150px;
 }
+
+.square {
+    height: 35px; 
+    width: 35px; 
+    margin: 0px; 
+    padding: 0px; 
+    font-size: 8px; 
+    border: 1.2px solid black; 
+    background-color: rgb(117, 141, 141);
+}
+
+.hover-effect {
+    background-color: red;
+}
