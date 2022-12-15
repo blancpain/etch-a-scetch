@@ -7,23 +7,23 @@ const GRID_HEIGHT = Number(containerStyles["max-height"].split("p")[0]);
 
 //button related
 const buttonPanel = document.querySelector('#button-panel');
-const promptForSizeOfGrid = document.createElement('button');
 //color picker
 const colorPicker = document.createElement('input');
 colorPicker.type = "color";
 colorPicker.id = "colorpicker";
 colorPicker.value = "#610A0A";
 buttonPanel.appendChild(colorPicker);
-//change size
-promptForSizeOfGrid.textContent = "Change grid";
-promptForSizeOfGrid.classList.add('buttons');
-promptForSizeOfGrid.addEventListener('click', () => {
-    const userInput = prompt("How many squares?");
-    if (userInput > 100) {
-        alert("Too high, try something lower than 100.");
-    } else {
-        createGrid(userInput);
-    };
+//range slider to change size
+const promptForSizeOfGrid = document.createElement('input');
+promptForSizeOfGrid.type = "range";
+promptForSizeOfGrid.min = "16";
+promptForSizeOfGrid.max = "100";
+promptForSizeOfGrid.id = "slider";
+promptForSizeOfGrid.value = "50 x 50";
+promptForSizeOfGrid.addEventListener('input', () => {
+    //to get the first number in "value"
+    const userInput = parseInt(promptForSizeOfGrid.value.split(" ")[0]);
+    createGrid(userInput);
 });
 buttonPanel.appendChild(promptForSizeOfGrid);
 //reset
@@ -36,7 +36,7 @@ resetGrid.addEventListener('click', () => {
 buttonPanel.appendChild(resetGrid);
 
 //create and update grid; perhaps can place drawing functionality in another function
-function createGrid(squares=16) {
+function createGrid(squares=30) {
     container.innerHTML = '';
     colorPicker.value = "#610A0A";
     let color = "#610A0A";
