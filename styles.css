@@ -13,6 +13,7 @@ body {
     max-width: 800px; 
     max-height: 800px; 
     background-color: #d0dcdc;
+    box-shadow:2px 3px 5px rgb(77, 75, 75);
 }
 
 #button-panel {
@@ -67,7 +68,7 @@ body {
     width: 25px;
     height: 25px;
     border-radius: 50%; 
-    background: #131615;
+    background: rgb(72, 75, 80);
     cursor: pointer;
   }
   
@@ -75,6 +76,6 @@ body {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #161a18;
+    background: rgb(72, 75, 80);
     cursor: pointer;
   }
