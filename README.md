@@ -1,4 +1,4 @@
-# etch-a-scetch
+# Etch-a-scetch
 
 ## Overview 
 Simple Etch-a-scetch project that is super fun.
