@@ -11,7 +11,7 @@ const buttonPanel = document.querySelector('#button-panel');
 const colorPicker = document.createElement('input');
 colorPicker.type = "color";
 colorPicker.id = "colorpicker";
-colorPicker.value = "#610A0A";
+colorPicker.value = "#610a0a";
 buttonPanel.appendChild(colorPicker);
 //range slider to change size
 const promptForSizeOfGrid = document.createElement('input');
@@ -43,17 +43,17 @@ buttonPanel.appendChild(resetGrid);
 //create and update grid; perhaps can place drawing functionality in another function
 function createGrid(squares=30) {
     container.innerHTML = '';
-    colorPicker.value = "#610A0A";
-    let color = "#610A0A";
-    //listen for changes in default color options
+    //listen for changes in default color options, if no user input yet use default color
+    let color = colorPicker.value;
     colorPicker.addEventListener('input', () => {
         color = colorPicker.value;
-    })
+    });
+    //create grid
     for (let i = 1; i < (squares * squares) + 1; i++) {
         const square = document.createElement('div');
         const squareWidth = GRID_WIDTH / squares;
         const squareHeight = GRID_HEIGHT / squares;
-        //configure container to accept relevant number of squares
+        //configure container to accept relevant number of squares; have to set both ROWS and COLUMNS otherwise squares disappear when whole row/column is colored
         container.setAttribute('style', `grid-template-columns: repeat(${squares}, 1fr); grid-template-rows: repeat(${squares}, 1fr)`); 
         //set square dimensions to fit container
         square.setAttribute('style', `width: ${squareWidth}px; height: ${squareHeight}px;`);
