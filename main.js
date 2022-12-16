@@ -4,7 +4,7 @@ const containerStyles = getComputedStyle(container);
 //getComputedStyle returns size in ...px so need to convert to number before using 
 const GRID_WIDTH = Number(containerStyles["max-width"].split("p")[0]);
 const GRID_HEIGHT = Number(containerStyles["max-height"].split("p")[0]);
-
+const numOfSquares = 30;
 //button related
 const buttonPanel = document.querySelector('#button-panel');
 //color picker
@@ -22,10 +22,15 @@ promptForSizeOfGrid.id = "slider";
 promptForSizeOfGrid.value = "50 x 50";
 promptForSizeOfGrid.addEventListener('input', () => {
     //to get the first number in "value"
-    const userInput = parseInt(promptForSizeOfGrid.value.split(" ")[0]);
-    createGrid(userInput);
+    const numOfSquares = parseInt(promptForSizeOfGrid.value.split(" ")[0]);
+    showNumOfSquares.textContent = `Size: ${numOfSquares}`;
+    createGrid(numOfSquares);
 });
 buttonPanel.appendChild(promptForSizeOfGrid);
+//indicator for number of squares
+const showNumOfSquares = document.createElement('div');
+showNumOfSquares.textContent = `Size: ${numOfSquares}`;
+buttonPanel.appendChild(showNumOfSquares);
 //reset
 const resetGrid = document.createElement('button');
 resetGrid.textContent = "Clear";
@@ -49,7 +54,7 @@ function createGrid(squares=30) {
         const squareWidth = GRID_WIDTH / squares;
         const squareHeight = GRID_HEIGHT / squares;
         //configure container to accept relevant number of squares
-        container.setAttribute('style', `grid-template-columns: repeat(${squares}, 1fr)`); 
+        container.setAttribute('style', `grid-template-columns: repeat(${squares}, 1fr); grid-template-rows: repeat(${squares}, 1fr)`); 
         //set square dimensions to fit container
         square.setAttribute('style', `width: ${squareWidth}px; height: ${squareHeight}px;`);
         container.appendChild(square);
