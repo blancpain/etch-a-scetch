@@ -1,3 +1,7 @@
+:root {
+    --cols: 30;
+}
+
 body {
     background-color: rgb(122, 139, 157);
     font-family: 'Roboto', sans-serif;
@@ -14,6 +18,16 @@ body {
     max-height: 800px; 
     background-color: #d0dcdc;
     box-shadow:2px 3px 5px rgb(77, 75, 75);
+}
+
+#grid {
+  display: grid;
+  width: 800px;
+  height: 800px;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--cols), 1fr);
+  background-color: #d0dcdc;
+  box-shadow:2px 3px 5px rgb(77, 75, 75);
 }
 
 #button-panel {
