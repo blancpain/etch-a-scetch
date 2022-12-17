@@ -15,12 +15,10 @@ promptForSizeOfGrid.type = "range";
 promptForSizeOfGrid.min = "8";
 promptForSizeOfGrid.max = "100";
 promptForSizeOfGrid.id = "slider";
-promptForSizeOfGrid.value = "50 x 50";
-promptForSizeOfGrid.addEventListener('input', () => {
-    //to get the first number in "value"
-    const numOfSquares = parseInt(promptForSizeOfGrid.value.split(" ")[0]);
-    showNumOfSquares.textContent = `Size: ${numOfSquares}`;
-    createGrid(numOfSquares);
+promptForSizeOfGrid.value = "30";
+promptForSizeOfGrid.addEventListener('change', () => {
+    showNumOfSquares.textContent = `Size: ${promptForSizeOfGrid.value}`;
+    createGrid();
 });
 buttonPanel.appendChild(promptForSizeOfGrid);
 //indicator for number of squares
@@ -37,18 +35,18 @@ resetGrid.addEventListener('click', () => {
 buttonPanel.appendChild(resetGrid);
 
 //main function
-function createGrid(squares=numOfSquares) {
+function createGrid() {
     container.innerHTML = '';
-    //listen for changes in default color options, if no user input yet use default color
+    //listen for changes in color picker, if no user input use default color
     let color = colorPicker.value;
     colorPicker.addEventListener('input', () => {
         color = colorPicker.value;
     });
     //use the css variable "--cols" and update it dynamically to populate grid
-    let numOfCols = squares;
-    container.style.setProperty("--cols", numOfCols);
+    let squares = promptForSizeOfGrid.value;
+    container.style.setProperty("--cols", squares);
     //create grid
-    for (let i = 1; i < (numOfCols * numOfCols) + 1; i++) {
+    for (let i = 1; i < (squares * squares) + 1; i++) {
         const square = document.createElement('div');
         container.appendChild(square);
     };
